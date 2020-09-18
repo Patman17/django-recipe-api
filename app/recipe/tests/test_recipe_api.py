@@ -143,7 +143,7 @@ class PrivateRecipeApiTest(TestCase):
         ingredient2 = sample_ingredient(user=self.user, name='Crabs')
         payload = {
             'title': 'Thai seafood noodles',
-            'ingredients': [ingredient1, ingredient2],
+            'ingredients': [ingredient1.id, ingredient2.id],
             'time_minutes': 30,
             'price': 15
         }
@@ -155,4 +155,4 @@ class PrivateRecipeApiTest(TestCase):
         ingredients = recipe.ingredients.all()
         self.assertEqual(ingredients.count(), 2)
         self.assertIn(ingredient1, ingredients)
-        self.assertIn(ingreident2, ingredients)
+        self.assertIn(ingredient2, ingredients)
